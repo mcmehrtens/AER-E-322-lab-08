@@ -139,6 +139,8 @@
 \section*{Question 1}
 \textit{(\num{30} points) For specimens I and II (Table \ref{tbl:question_1_table} below), derive an expression for the area moment of inertia, $I$, about its neutral axis in terms of $h$, $b$ and $t$.}
 
+\textit{Hint: To derive the expression for $I$ for specimens I and II, you can do one of two ways: (\num{1}) calculate $I$ for the horizontal flanges and vertical web individually and then sum up or (\num{2}) use ``subtraction'' method by calculating $I$ for a larger ``outer'' rectangular area and then subtracting it from $I$ of the smaller ``inner'' area. You will also need parallel axis theorem. Also, as indicated in Figure \ref{fig:question_2_fig}, the shear center offset $e$ for the C-channel beams is measured from the center of the vertical web, while $e$ for the circular open-channel pipes is measured from the center of circular cross section. Likewise, height $h$ is measured between mid-planes of top and bottom flanges, and $r$ is mean radius, \ie $r=\frac{OD-t}{2}$.}
+
 \begin{table}[!htbp]
 \caption{Dimensions for the two types of cross sections of specimens.}
 \begin{center}
@@ -163,7 +165,24 @@
 \label{tbl:question_1_table}
 \end{table}
 
-% TODO
+\textbf{Solution:}
+
+Let the $x$-$y$ axis be centered at the center of the vertical flange. The neutral axis of a symmetrical C-channel is on the horizontal $x$-axis. The moment of inertia, $I$, about the neutral axis can be calculated by finding the moment of inertia for each component (the two horizontal rectangles and a vertical rectangle) and then adding them together. The moment of inertia for a rectangle is shown in Equation \ref{eqn:moment_of_inertia}. Since the centroid of the two horizontal rectangles does not intersect the centroid of the beam, we must use the parallel axis theorem, noted in Equation \ref{eqn:parallel_axis_theorem}.
+\begin{align}
+	I_\text{rect}&=\frac{1}{12}bh^3\label{eqn:moment_of_inertia}\\
+	I&=I_\text{shape}+Ay^2\label{eqn:parallel_axis_theorem}
+\end{align}
+where $A$ is the area of the shape and $y$ is the distance from the centroid of the shape to the neutral axis.
+
+Using these formulas, we can calculate the moment of inertia, $I$, for the C-channel beam as shown below:
+\begin{align*}
+	I&=I_\text{top-rect}+I_\text{vert-rect}+I_\text{bot-rect}\\
+	I&=\frac{1}{12}bt^3+bt\left(\frac{h}{2}\right)^2+\frac{1}{12}bt^3+bt\left(-\frac{h}{2}\right)^2+\frac{1}{12}t(h-t)^3
+\end{align*}
+Simplifying the above equation, we find that the general formula for calculating the moment of inertia is Equation \ref{eqn:I}
+\begin{align}\label{eqn:I}
+	I&=\frac{bt^3}{6}+\frac{bth^2}{2}+\frac{t(h-t)^3}{12}
+\end{align}
 
 \section*{Question 2}
 \textit{(\num{25} points) Calculate the theoretical shear center of each of the five specimens using the following expressions as derived on pages \numlist{9;11} in lecture notes:}
@@ -173,8 +192,6 @@
 \end{align}
 \textit{See Figure \ref{fig:question_2_fig} for all the corresponding parameters $h$, $b$, $t$, $r$, and $\theta_0$. Note that the \textcolor{red}{total opening angle is $2\theta_0$}.}
 
-\textit{Hint: To derive the expression for $I$ for specimens I and II, you can do one of two ways: (\num{1}) calculate $I$ for the horizontal flanges and vertical web individually and then sum up or (\num{2}) use ``subtraction'' method by calculating $I$ for a larger ``outer'' rectangular area and then subtracting it from $I$ of the smaller ``inner'' area. You will also need parallel axis theorem. Also, as indicated in Figure \ref{fig:question_2_fig}, the shear center offset $e$ for the C-channel beams is measured from the center of the vertical web, while $e$ for the circular open-channel pipes is measured from the center of circular cross section. Likewise, height $h$ is measured between mid-planes of top and bottom flanges, and $r$ is mean radius, \ie $r=\frac{OD-t}{2}$.}
-
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=6in]{images/Question 2 Figure}
@@ -182,10 +199,37 @@
 	\label{fig:question_2_fig}
 \end{figure}
 
-% TODO
+\textbf{Solution:}
+
+Shear centers are calculated in the MATLAB script attached to this document.
 
 \section*{Question 3}
 \textit{(\num{5} points) Tabulate the results.}
 
-% TODO
+\textbf{Solution:}
+
+The results of the previous two questions are tabulated in Table \ref{tbl:question_3_table}.
+
+\begin{table}[!htbp]
+\caption{The moments of inertia and shear centers of specimens \num{1}--\num{5}.}
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Specimen &Moment of Inertia, &Shear Center, \\
+		ID&$I$ (\unit{inch^4})&$e$ (\unit{inch})\\
+		\hline
+		1&\num{0.4305}&\num{0.5815}\\
+		\hline
+		2&\num{0.01310}&\num{0.2323}\\
+		\hline
+		3&N/A&\num{1.588}\\
+		\hline
+		4&N/A&\num{1.507}\\
+		\hline
+		5&N/A&\num{0.9655}\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:question_3_table}
+\end{table}
 \end{document}
