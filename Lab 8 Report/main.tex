@@ -158,21 +158,30 @@
 
 \chapter{Pre-Lab} \label{pre-lab}
 \section{Introduction} \label{introduction}
-% TODO
+To reduce the weight and cost of aircraft, aerospace engineers use thin-walled structures throughout aerostructures, particularly in the wings. In addition to being more weight and cost effective than traditional structures, they are generally equally strong. Unfortunately, one of the side effects of thin-walled structures is their tendency to twist under unsymmetrical loadings.
+
+To evaluate the strength of thin-walled structures, we have to determine where the shear center is, \ie the point where applied loads bend and do not twist the structure. In this lab, we learned how to calculate the shear center and deflection of a thin-walled structure.
 
 \section{Objectives} \label{objectives}
-% TODO
+Using the five provided specimens, we will apply twisting loads to thin-walled beams and make a number of measurements for each specimen. We will use the material learned in lecture and in the lecture notes to calculate the shear center of the thin-walled beams. 
 
 \section{Hypothesis} \label{hypothesis}
-% TODO
+Although our individual results from prelab varied significantly from each other, we expect the actual shear center values to at least correlate to the answers we calculated in prelab, even if they are off by a constant or a proportionate. We predict the cross sectional and the angle of opening will have a significant impact on the materials shear center and resistance or tendency to twist.
 
 \chapter{Lab Work} \label{lab_work}
 \section{Variables} \label{variables}
 \subsection{Independent Variables} \label{variables-independent_variables}
-% TODO
+\begin{itemize}
+	\item Weight of mass; the applied load varied amongst the specimens
+	\item Material of the specimen; the material of the element affects the local stiffness or strength and its tendency to twist
+	\item Cross-section of the specimen; this variable controls the value of I which is used to derive the location of the shear center 
+\end{itemize}
 
 \subsection{Dependent Variables} \label{variables-dependent_variables}
-% TODO
+\begin{itemize}
+	\item Deflection due to load; these deflections take the form of bending as observed in cantilevered beams or torsional deflections in the form of twist 
+	\item Shear center; the point about which applied loads cause bending but not torsion. The shear center is dependent on the cross-sectional layout. 
+\end{itemize}
 
 \section{Work Assignments} \label{work_assignments}
 Refer to Table \ref{table:work_assignments} for the distribution of work during this lab.
@@ -186,45 +195,43 @@ Refer to Table \ref{table:work_assignments} for the distribution of work during 
 		\hline
 		\multicolumn{4}{| c |}{\textit{Lab Work}} \\
 		\hline
-		Date Recording & & & \\
+		Date Recording & X & X & X \\
 		\hline
-		Exp. Setup & & & \\
+		Exp. Setup & X & X & X \\
 		\hline
-		Exp. Work & & & \\
+		Exp. Work & X & X & X \\
 		\hline
-		Exp. Clean-Up & & & \\
-		\hline
-		\multicolumn{4}{| c |}{\textit{Post Lab}} \\
+		Exp. Clean-Up & X & X & X \\
 		\hline
 		\multicolumn{4}{| c |}{\textit{Report}} \\
 		\hline
-		Introduction & & & \\
+		Introduction & X & & X \\
 		\hline
-		Objectives & & & \\
+		Objectives & & & X \\
 		\hline
-		Hypothesis & & & \\
+		Hypothesis & X & & X \\
 		\hline
-		Variables & & & \\
+		Variables & & X & \\
 		\hline
-		Materials & & & \\
+		Materials & & X & \\
 		\hline
-		Apparatus & & & \\
+		Apparatus & & X & \\
 		\hline
-		Procedures & & & \\
+		Procedures & & X & \\
 		\hline
 		Data & & & \\
 		\hline
-		Analysis & & & \\
+		Analysis & X & X & X \\
 		\hline
-		Conclusion & & & \\
+		Conclusion & X & X & \\
 		\hline
-		References & & & \\
+		References & X & & \\
 		\hline
-		Appendix & & & \\
+		Appendix & X & & \\
 		\hline
-		Revisions & & & \\
+		Revisions & X & X & \\
 		\hline
-		Editing & & & \\
+		Editing & X & & \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -232,24 +239,142 @@ Refer to Table \ref{table:work_assignments} for the distribution of work during 
 \end{table}
 
 \section{Materials} \label{materials}
-% TODO
+\begin{itemize}
+	\item Five beam specimens as described in Table \ref{tbl:specimens}
+	\item \qty{100}{\g} and \qty{200}{\g} mass
+	\item Ruler
+	\item Clamp; to secure one end of the beams
+	\item Level
+\end{itemize}
+
+\begin{table}[!htbp]
+\caption{Dimensions and specifications for the five different specimens.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		Specimen &Cross section &Height, &Width, &Thickness, &Outer &Opening \\
+		ID&type&$h$ (\unit{inch})&$b$ (\unit{inch})&$t$ (\unit{inch})&diameter, &angle, \\
+		&&&&&$OD$ (\unit{inch})&$2\theta_0$ (\unit{deg})\\
+		\hline
+		I&Plastic C-channel&2.43&1.456&0.08&N/A&N/A\\
+		\hline
+		II&Metal C-channel&0.84&0.56&0.055&N/A&N/A\\
+		\hline
+		III&PVC circular open&N/A&N/A&0.071&1.66&3.1\\
+		\hline
+		IV&PVC circular open&N/A&N/A&0.071&1.66&36.3\\
+		\hline
+		V&PVC circular open&N/A&N/A&0.071&1.66&103.7\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:specimens}
+\end{table}
 
 \section{Apparatus} \label{apparatus}
-% TODO
+The five beams should be cantilevered with the clamp. On the free end, there is a cross beam on which the weight will be hung. Figure \ref{fig:cbar} shows the apparatus for the C-channel beam and Figure \ref{fig:pvcbar} shows the apparatus for the circular PVC beam.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=6in]{images/c-channel beam}
+	\caption{One of the cantilevered C-channel beams from lab eight \cite{demo_video}.}
+	\label{fig:cbar}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=6in]{images/circular pvc beam}
+	\caption{One of the cantilevered circular PVC beams from lab eight \cite{demo_video}.}
+	\label{fig:pvcbar}
+\end{figure}
 
 \section{Procedures} \label{procedures}
-\subsection{Setup} \label{procedures-setup}
-% TODO
+Set up the five beams as described and shown in Section \ref{apparatus}. Ensure the beams and the table are level. For specimen one, perform a preliminary measurement: measure the length from the edge of the clamp to the cross bar and measure the height from the table to a reference point at the same length as the cross bar, \eg the bottom of the beam.
 
-\subsection{Cleanup} \label{procedures-cleanup}
-% TODO
+For each of the five beams, perform the following procedure at least four times---placing the weight at least twice on each side of the cross beam:
+\begin{enumerate}
+	\item Level the cross bar as best you can. For the circular specimens, this can be done by rotating the beam. Measure the height at both ends of the cross bar to calculate the initial angle of twist. For specimens one and two, if the initial angle of twist is greater than \qty{1}{\degree}, account for this baseline by subtracting the initial angle of twist from subsequent angle of twist calculations.
+	\item Place a weight on the cross beam at an arbitrary location (at least twice on both sides). Use the \qty{100}{\g} weight for specimens one, three, and five, and use the \qty{200}{\g} weight for specimens two and four.
+	\item Record the location of the weight along the cross bar and the height of both sides of the cross beam. Since the shear center is measured from the center of the circular beams and from the center of the vertical web of the C-beams, make sure to note where your cross beam measurements are referenced from. Later in the analysis you can adjust your cross beam measurements to be relative to the shear center.
+\end{enumerate}
+
+For specimen one, put the weight at the shear center, \ie the point where an applied weight causes no twist, and measure the height at the reference point again. This should give you beam deflection.
 
 \section{Data} \label{data}
-% TODO
+\textbf{Note:} Our group misinterpreted the lab instructions for this lab. Instead of measuring the height of the cross beam at both ends, we measured the height of the actual beam at both ends. The numbers we calculated in lab are, of course, meaningless. After looking through the lab instruction more closely, it is obvious we were supposed to measure the height of the cross beam to calculate the angle of twist.
+
+To still be able to do the analysis properly, we asked a fellow group in our AER E 322 section, Section \num{4} Group \num{3}, if we could use their data. They agreed; all data used in this report is courtesy of lab group \num{3} in AER E 322 section \num{4}.
+
+To calculate angle of twist, we used Equation \ref{eqn:aot} from the lab eight lecture notes \cite{lecture_notes}:
+\begin{align} \label{eqn:aot}
+	\theta&=\sin^{-1}\left(\frac{h_R-h_L}{L}\right)
+\end{align}
+where $h_R$ is the height from the table to the right end of the cross bar, $h_L$ is the height from the table to the left end of the cross bar, and $L$ is the length of the cross bar. Figure \ref{fig:aot} shows this angle visually.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=4in]{images/aot}
+	\caption{Visual representation of the angle of twist of the cross bar. \cite{lecture_notes}}
+	\label{fig:aot}
+\end{figure}
+
+The data we used in the analysis portion of this lab is shown in Table \ref{tbl:data}.
+
+\begin{table}[!htbp]
+\caption{Data collected from lab eight, courtesy of lab group \num{3} from AER E 322 section \num{4}. $h$ is the height of the cross bar at the left and right ends, $L$ is the length of the cross bar, $\theta$ is the angle of twist, calculated using Equation \ref{eqn:aot}, $x$ is the distance to the weight on the cross bar, and $m$ is the mass of the weight.}
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		Specimen&$h_L$ (\unit{\cm})&$h_R$ (\unit{\cm})&$L$ (\unit{\cm})&$\theta$ (\unit{\degree})&$x_L$ (\unit{cm})&$x_R$ (\unit{cm})&$m$ (\unit{\g})\\
+		\hline
+		\num{1}&\num{10.4}&\num{13.1}&\num{44.0}&\num{3.52}&\num{11.0}&N/A&\num{100}\\
+		\hline
+		\num{1}&\num{8.8}&\num{14.6}&\num{44.0}&\num{7.57}&\num{14.0}&N/A&\num{100}\\
+		\hline
+		\num{1}&\num{17.7}&\num{4.8}&\num{44.0}&\num{-17.0}&N/A&\num{9.2}&\num{100}\\
+		\hline
+		\num{1}&\num{18.7}&\num{3.4}&\num{44.0}&\num{-20.3}&N/A&\num{12.8}&\num{100}\\
+		\hline
+		\num{2}&\num{9.9}&\num{11.4}&\num{30.0}&\num{2.87}&\num{3.1}&N/A&\num{200}\\
+		\hline
+		\num{2}&\num{8.1}&\num{13.0}&\num{30.0}&\num{9.40}&\num{9.0}&N/A&\num{200}\\
+		\hline
+		\num{2}&\num{11.6}&\num{9.5}&\num{30.0}&\num{-4.01}&N/A&\num{3.3}&\num{200}\\
+		\hline
+		\num{2}&\num{12.6}&\num{8.3}&\num{30.0}&\num{-8.24}&N/A&\num{7.5}&\num{200}\\
+		\hline
+		\num{3}&\num{7.7}&\num{12.5}&\num{30.0}&\num{9.21}&\num{4.9}&N/A&\num{100}\\
+		\hline
+		\num{3}&\num{6.9}&\num{13.4}&\num{30.0}&\num{12.5}&\num{7.4}&N/A&\num{100}\\
+		\hline
+		\num{3}&\num{12.1}&\num{8.2}&\num{30.0}&\num{-7.47}&N/A&\num{9.8}&\num{100}\\
+		\hline
+		\num{3}&\num{11.5}&\num{9.1}&\num{30.0}&\num{-4.59}&N/A&\num{5.6}&\num{100}\\
+		\hline
+		\num{4}&\num{9.8}&\num{13.4}&\num{30.0}&\num{6.89}&\num{5.0}&N/A&\num{200}\\
+		\hline
+		\num{4}&\num{8.9}&\num{14.7}&\num{30.0}&\num{11.1}&\num{7.6}&N/A&\num{200}\\
+		\hline
+		\num{4}&\num{15.3}&\num{6.1}&\num{30.0}&\num{-17.9}&N/A&\num{7.5}&\num{200}\\
+		\hline
+		\num{4}&\num{14.2}&\num{7.7}&\num{30.0}&\num{-12.5}&N/A&\num{4.5}&\num{200}\\
+		\hline
+		\num{5}&\num{10.0}&\num{13.8}&\num{30.5}&\num{7.16}&\num{4.5}&N/A&\num{100}\\
+		\hline
+		\num{5}&\num{7.6}&\num{16.4}&\num{30.5}&\num{16.8}&\num{10.8}&N/A&\num{100}\\
+		\hline
+		\num{5}&\num{15.0}&\num{7.2}&\num{30.5}&\num{-14.8}&N/A&\num{5.6}&\num{100}\\
+		\hline
+		\num{5}&\num{17.2}&\num{5.8}&\num{30.5}&\num{-21.9}&N/A&\num{10.6}&\num{100}\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:data}
+\end{table}
 
 \chapter{Conclusion} \label{conclusion-chapter}
 \section{Analysis} \label{analysis}
-% TODO
+\subsection{Problem 1}
+
 
 \section{Conclusion} \label{conclusion-section}
 % TODO
