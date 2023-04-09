@@ -379,19 +379,19 @@ The measured shear centers and the theoretical shear center are shown in Table \
 \begin{table}[!htbp]
 \caption{Dimensions and specifications for the five different specimens.}
 \begin{center}
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Specimen&$e_\text{meas}$ (\unit{cm})&$e_\text{theor}$  (\unit{cm})\\
+		Specimen&$e_\text{meas}$ (\unit{cm})&$e_\text{theor}$  (\unit{cm})&Error (\unit{\percent})\\
 		\hline
-		1&\num{-0.800}&\num{1.48}\\
+		1&\num{-0.800}&\num{-1.48}&\num{45.8}\\
 		\hline
-		2&\num{-0.322}&\num{0.590}\\
+		2&\num{-0.322}&\num{-0.590}&\num{45.4}\\
 		\hline
-		3&\num{0.798}&\num{4.03}\\
+		3&\num{0.798}&\num{-4.03}&\num{119.8}\\
 		\hline
-		4&\num{-3.77}&\num{3.83}\\
+		4&\num{-3.77}&\num{-3.87}&\num{2.79}\\
 		\hline
-		5&\num{-3.52}&\num{2.45}\\
+		5&\num{-3.52}&\num{-3.21}&\num{9.54}\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -399,6 +399,8 @@ The measured shear centers and the theoretical shear center are shown in Table \
 \end{table}
 
 % TODO: Add analysis of problem 1
+
+Take out outlier, error drops to 103.113% for specimen 3
 
 \subsection{Problem 2}
 First, we calculate the beam deflection theoretically using the method of superposition. Specifically, we refer to the max deflection formula, Equation \ref{eqn:deflection}, for a cantilevered beam shown on slide \num{14} of the week seven lecture notes \cite{week_7_lecture_notes}.
@@ -413,6 +415,8 @@ where $\nu_\text{max}$ is the maximum deflection of the beam, $P$ is the applied
 In lab, we measured the deflection to be $\qty{15.0}{\cm}-\qty{15.2}{\cm}=\qty{-0.2}{\cm}=\qty{-2}{\mm}$. This very closely matches the theoretical calculation, the limiting factor being the ruler we used to measure the height.
 
 \subsection{Problem 3}
+% TODO: Revise
+
 We will use Figure \ref{fig:cross_sections} from the lab eight instructions \cite{lab_instructions} as a visual guide to our shear flow derivations.
 
 \begin{figure}[htbp]
@@ -432,13 +436,8 @@ See Figure \ref{fig:peter_work} for our shear flow calculations.
 \end{figure}
 
 \subsection{Problem 4}\label{problem_4}
-\begin{align*}
-	e&=\frac{h^2b^2t}{4I}\\
-	e_\num{1}&=\frac{(\num{61.722})^2(\num{36.9824})^2(\num{2.032})}{\num{4}(\num{245377})}\\
-	&=\qty{10.787}{\mm}\\
-	e_\num{2}&=\frac{(\num{21.336})^2(\num{14.224})^2(\num{1.397})}{\num{4}(\num{9171.38})}\\
-	&=\qty{3.507}{\mm}
-\end{align*}
+% TODO: Revise
+
 \begin{align*}
 	\text{Specimen }\num{1}\text{: }(x,y)&=(\num{10.787},\num{0}) \unit{\mm}\\
 	\text{Specimen }\num{2}\text{: }(x,y)&=(\num{3.507},\num{0}) \unit{\mm}
@@ -446,9 +445,13 @@ See Figure \ref{fig:peter_work} for our shear flow calculations.
 Since the cross section is symmetrical across the $y$-axis, we know that the $y$-coordinate for shear center will be \num{0} due to the placement of the $x$-axis being at $\frac{h}{2}$. Then we can find the $x$-coordinate by using the equation for e above.  
 
 \subsection{Problem 5}
+% TODO: Revise
+
 If the height increased significantly, the sample would be more comparable to a rectangular beam. Since $h$ would increase so much, $h$ would dominate the equation making $b$ insignificant. Above the equation used to calculate $I$ as for that of a C-section, but since can be cut out, the new equation for $I$ would be that of a rectangular beam. Substituting our derived $I$ equation into the $e$ equation, we see that as $h$ approaches infinity, $e$ approaches \num{0}. This would offset the shear center to be at the origin used in question \ref{problem_4}. Because the load of offset slightly, there will still be an angle of twist in the part, but due to the same reason stated earlier, the angle of twist would be so small it would extremely small.
 
 \subsection{Problem 6}
+% TODO: Revise
+
 During the increase of both opening angle and radius, shape of the section going not to look like $C$. Increasing open angle, the open portion gets itself bigger. If the open angle reaches \qty{180}{\degree} ($2\theta_0=\qty{180}{\degree}$), shape of cross section will look like the circular pipe split in half along to path of that. However, the area value of this section will be bigger, depending on the value of increment. The equation below expresses the area of section with the circular given:
 \begin{align*}
 	A&=\pi\left(r+\frac{t}{2}\right)^2\frac{360-2\theta_0}{360}-\pi\left(r-\frac{t}{2}\right)^2\frac{360-2\theta_0}{360}
@@ -468,6 +471,8 @@ The most significant source of error in this lab is likely our own derivations a
 Additionally, many of the typical sources of error still apply. If the lab table or the beam was not initially level, all our measurements would be systematically incorrect. If the thickness of the beams or the dimensions were not exactly as described in the lab instructions, this would also result in higher error. Since we were measuring by hand, there is a possibly for random human error to propagate through our calculations due to the inconsistent way in which we measure things visually.
 
 \section{Conclusion} \label{conclusion-section}
+% TODO: Revise
+
 Overall, our theoretical values did not match our measured values. This is mainly due to poor derivations or calculations, as described in Section \ref{sources_of_error}. Each group member had differing derivations for these specimens. Although our derivations were incorrect, we could provide valuable insights into how the material would react under load. The measured values that were obtained proved to be reliable data for finding the actual shear centers of each specimen.
 
 \printbibliography[heading=subbibintoc]

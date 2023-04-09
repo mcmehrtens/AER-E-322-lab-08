@@ -92,16 +92,16 @@ lobf_x_1 = linspace(double(separateUnits(x_1(2))), ...
     double(separateUnits(x_1(end))), ...
     1000); % [cm]
 lobf_y_1 = c_1(1) * lobf_x_1 + c_1(2); % [deg]
-e_1 = -c_1(2) / c_1(1); % [cm]
+e_1 = (-c_1(2) / c_1(1))*u.cm; % [cm]
 
-fprintf("e_1 = %g [cm]\n", e_1);
+fprintf("e_1 = %g [cm]\n", separateUnits(e_1));
 
 figure(1);
 scatter(separateUnits(x_1), separateUnits(aot_1), ...
     "DisplayName", "Measurements");
 hold on;
 plot(lobf_x_1, lobf_y_1, "DisplayName", "Line of Best Fit");
-scatter(e_1, 0, "filled", "DisplayName", "Shear Center");
+scatter(separateUnits(e_1), 0, "filled", "DisplayName", "Shear Center");
 hold off;
 title("Angle of Twist vs. Distance from Reference Center");
 xlabel("x (cm)");
@@ -115,16 +115,16 @@ lobf_x_2 = linspace(double(separateUnits(x_2(2))), ...
     double(separateUnits(x_2(end))), ...
     1000); % [cm]
 lobf_y_2 = c_2(1) * lobf_x_2 + c_2(2); % [deg]
-e_2 = -c_2(2) / c_2(1); % [cm]
+e_2 = (-c_2(2) / c_2(1))*u.cm; % [cm]
 
-fprintf("e_2 = %g [cm]\n", e_2);
+fprintf("e_2 = %g [cm]\n", separateUnits(e_2));
 
 figure(2);
 scatter(separateUnits(x_2), separateUnits(aot_2), ...
     "DisplayName", "Measurements");
 hold on;
 plot(lobf_x_2, lobf_y_2, "DisplayName", "Line of Best Fit");
-scatter(e_2, 0, "filled", "DisplayName", "Shear Center");
+scatter(separateUnits(e_2), 0, "filled", "DisplayName", "Shear Center");
 hold off;
 title("Angle of Twist vs. Distance from Reference Center");
 xlabel("x (cm)");
@@ -156,24 +156,72 @@ legend;
 grid on;
 
 % Plot and Calculate Shear Center of Specimen 4
-c_4 = polyfit(double(separateUnits(x_4)), double(separateUnits(aot_3)), 1);
-lobf_x_3 = linspace(double(separateUnits(x_3(2))), ...
-    double(separateUnits(x_3(end - 1))), ...
+c_4 = polyfit(double(separateUnits(x_4)), double(separateUnits(aot_4)), 1);
+lobf_x_4 = linspace(double(separateUnits(x_4(2))), ...
+    double(separateUnits(x_4(end - 1))), ...
     1000); % [cm]
-lobf_y_3 = c_3(1) * lobf_x_3 + c_3(2); % [deg]
-e_3 = -c_3(2) / c_3(1); % [cm]
+lobf_y_4 = c_4(1) * lobf_x_4 + c_4(2); % [deg]
+e_4 = -c_4(2) / c_4(1); % [cm]
 
-fprintf("e_3 = %g [cm]\n", e_3);
+fprintf("e_4 = %g [cm]\n", e_4);
 
-figure(3);
-scatter(separateUnits(x_3), separateUnits(aot_3), ...
+figure(4);
+scatter(separateUnits(x_4), separateUnits(aot_4), ...
     "DisplayName", "Measurements");
 hold on;
-plot(lobf_x_3, lobf_y_3, "DisplayName", "Line of Best Fit");
-scatter(e_3, 0, "filled", "DisplayName", "Shear Center");
+plot(lobf_x_4, lobf_y_4, "DisplayName", "Line of Best Fit");
+scatter(e_4, 0, "filled", "DisplayName", "Shear Center");
 hold off;
 title("Angle of Twist vs. Distance from Reference Center");
 xlabel("x (cm)");
 ylabel("theta (deg)");
 legend;
 grid on;
+
+% Plot and Calculate Shear Center of Specimen 5
+c_5 = polyfit(double(separateUnits(x_5)), double(separateUnits(aot_5)), 1);
+lobf_x_5 = linspace(double(separateUnits(x_5(2))), ...
+    double(separateUnits(x_5(end))), ...
+    1000); % [cm]
+lobf_y_5 = c_5(1) * lobf_x_5 + c_5(2); % [deg]
+e_5 = -c_5(2) / c_5(1); % [cm]
+
+fprintf("e_5 = %g [cm]\n", e_5);
+
+figure(5);
+scatter(separateUnits(x_5), separateUnits(aot_5), ...
+    "DisplayName", "Measurements");
+hold on;
+plot(lobf_x_5, lobf_y_5, "DisplayName", "Line of Best Fit");
+scatter(e_5, 0, "filled", "DisplayName", "Shear Center");
+hold off;
+title("Angle of Twist vs. Distance from Reference Center");
+xlabel("x (cm)");
+ylabel("theta (deg)");
+legend;
+grid on;
+
+% Calculate moments of inertia and theoretical shear centers
+[I_1, I_2, e_1_th, e_2_th, e_3_th, e_4_th, e_5_th] = calc_shear_centers;
+I_1 = unitConvert(I_1, u.cm^4); % [cm^4]
+I_2 = unitConvert(I_2, u.cm^4); % [cm^4]
+e_1_th = unitConvert(e_1_th, u.cm); % [cm]
+e_2_th = unitConvert(e_2_th, u.cm); % [cm]
+e_3_th = unitConvert(e_3_th, u.cm); % [cm]
+e_4_th = unitConvert(e_4_th, u.cm); % [cm]
+e_5_th = unitConvert(e_5_th, u.cm); % [cm]
+
+% Calculate relative errors
+err = @(meas, theor) abs((meas - theor) / theor) * 100; % [%]
+e_1_err = err(e_1, e_1_th);
+e_2_err = err(e_2, e_2_th);
+e_3_err = err(e_3, e_3_th);
+e_4_err = err(e_4, e_4_th);
+e_5_err = err(e_5, e_5_th);
+
+fprintf("e_1_err = %g%%\n" + ...
+    "e_2_err = %g%%\n" + ...
+    "e_3_err = %g%%\n" + ...
+    "e_4_err = %g%%\n" + ...
+    "e_5_err = %g%%\n", ...
+    [e_1_err, e_2_err, e_3_err, e_4_err, e_5_err]);
