@@ -1,0 +1,83 @@
+%% Creator: Inkscape 1.2.2 (b0a84865, 2022-12-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'specimen_1_graph_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{420bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.75)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{specimen_1_graph_svg-tex.pdf}}%
+    \put(0.11607143,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-15\end{tabular}}}}%
+    \put(0.24523804,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
+    \put(0.37976196,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-5\end{tabular}}}}%
+    \put(0.5125,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.64166661,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.76547625,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.89464286,0.05714286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}15\end{tabular}}}}%
+    \put(0.49107179,0.03125){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}x (cm)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{specimen_1_graph_svg-tex.pdf}}%
+    \put(0.09464286,0.07589286){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-15\end{tabular}}}}%
+    \put(0.09464286,0.17782732){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-10\end{tabular}}}}%
+    \put(0.10535714,0.27976196){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}-5\end{tabular}}}}%
+    \put(0.1125,0.38169643){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
+    \put(0.1125,0.48363089){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
+    \put(0.10178571,0.58556554){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}10\end{tabular}}}}%
+    \put(0.10178571,0.6875){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}15\end{tabular}}}}%
+    \put(0.08482143,0.34062536){\rotatebox{90}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}theta (deg)\end{tabular}}}}}%
+    \put(0.28125054,0.7015625){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{Angle of Twist vs. Distance from Reference Center}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{specimen_1_graph_svg-tex.pdf}}%
+    \put(0.775,0.65982143){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Measurements\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{specimen_1_graph_svg-tex.pdf}}%
+    \put(0.775,0.63928571){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Line of Best Fit\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{specimen_1_graph_svg-tex.pdf}}%
+    \put(0.775,0.61875){\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Shear Center\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{specimen_1_graph_svg-tex.pdf}}%
+  \end{picture}%
+\endgroup%

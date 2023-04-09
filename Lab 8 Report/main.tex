@@ -374,6 +374,22 @@ The data we used in the analysis portion of this lab is shown in Table \ref{tbl:
 \chapter{Conclusion} \label{conclusion-chapter}
 \section{Analysis} \label{analysis}
 \subsection{Problem 1}
+The measured shear centers were calculated with MATLAB by using the \texttt{polyfit} fit. \texttt{polyfit} takes the $x$ and $y$ values as an input---in our case the $x$ and $\theta$ values---as well as an integer specifying what order line of best fit is desired and returns the corresponding polynomial coefficients. In this lab, the shear center data is generally linear, so we use a first order \texttt{polyfit} function. After being called, \texttt{polyfit} returns two values $C_1$ and $C_2$ which form the following linear equation:
+\begin{align*}
+	y&=C_1x+C_2
+\end{align*}
+To find the $x$-intercept, we let $y=0$ and solve for $x$. This is shown below:
+\begin{align*}
+	0&=C_1x+C_2\\
+	x&=-\frac{C_2}{C_1}
+\end{align*}
+This calculated distance is the measured distance from the reference center to the shear center of a material. The scatter plots, lines of best fit, and the point of shear center are shown in the graphs in Appendix \ref{sec:shear_center_graphs}.
+
+The theoretical shear centers were calculated using MATLAB and referring to the formulas from prelab \cite{prelab_instructions}, namely Equations \ref{eqn:sc_cbeam} and \ref{eqn:sc_circbeam}.
+\begin{align}
+	\text{C-channel: }e&=\frac{h^2b^2t}{4I}\label{eqn:sc_cbeam}\\
+	\text{Circular open-channel: }e&=\frac{2r[\cos\theta_0(2\pi-2\theta_0)+2\sin\theta_0]}{2\pi-2\theta_0+\sin(2\theta_0)}\label{eqn:sc_circbeam}
+\end{align}
 The measured shear centers and the theoretical shear center are shown in Table \ref{tbl:shear_centers}.
 
 \begin{table}[!htbp]
@@ -398,9 +414,7 @@ The measured shear centers and the theoretical shear center are shown in Table \
 \label{tbl:shear_centers}
 \end{table}
 
-% TODO: Add analysis of problem 1
-
-Take out outlier, error drops to 103.113% for specimen 3
+Our theoretical calculations matched well for specimens four and five, but poorly for specimens one through three, with the worst match being for specimen three. If the outlier is removed from the specimen three data set, as shown in Figure \ref{fig:specimen_3_sc_modified} in Appendix \ref{sec:shear_center_graphs}, the error drops to a marginally improved \qty{103.1}{\percent}. Possible explanations for the source of this error are explained in Section \ref{sources_of_error}.
 
 \subsection{Problem 2}
 First, we calculate the beam deflection theoretically using the method of superposition. Specifically, we refer to the max deflection formula, Equation \ref{eqn:deflection}, for a cantilevered beam shown on slide \num{14} of the week seven lecture notes \cite{week_7_lecture_notes}.
@@ -477,4 +491,42 @@ Overall, our theoretical values did not match our measured values. This is mainl
 
 \printbibliography[heading=subbibintoc]
 \appendix
+\chapter{Graphs}
+\section{Shear Center Graphs} \label{sec:shear_center_graphs}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_1_graph}
+	\caption{The measured angles of twist for specimen one with the measured shear center.}
+	\label{fig:specimen_1_sc}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_2_graph}
+	\caption{The measured angles of twist for specimen two with the measured shear center.}
+	\label{fig:specimen_2_sc}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_3_graph}
+	\caption{The measured angles of twist for specimen three with the measured shear center.}
+	\label{fig:specimen_3_sc}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_4_graph}
+	\caption{The measured angles of twist for specimen four with the measured shear center.}
+	\label{fig:specimen_4_sc}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_5_graph}
+	\caption{The measured angles of twist for specimen five with the measured shear center.}
+	\label{fig:specimen_5_sc}
+\end{figure}
+\begin{figure}[htbp]
+	\centering
+	\includesvg[width=4in,inkscapelatex=false]{images/Graphs/specimen_3_graph_no_outlier}
+	\caption{The measured angles of twist for specimen three with the measured shear center and the final outlier data point removed.}
+	\label{fig:specimen_3_sc_modified}
+\end{figure}
 \end{document}
