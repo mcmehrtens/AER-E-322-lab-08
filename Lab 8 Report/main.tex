@@ -429,8 +429,6 @@ where $\nu_\text{max}$ is the maximum deflection of the beam, $P$ is the applied
 In lab, we measured the deflection to be $\qty{15.0}{\cm}-\qty{15.2}{\cm}=\qty{-0.2}{\cm}=\qty{-2}{\mm}$. This very closely matches the theoretical calculation, the limiting factor being the ruler we used to measure the height.
 
 \subsection{Problem 3}
-% TODO: Revise
-
 We will use Figure \ref{fig:cross_sections} from the lab eight instructions \cite{lab_instructions} as a visual guide to our shear flow derivations.
 
 \begin{figure}[htbp]
@@ -440,32 +438,142 @@ We will use Figure \ref{fig:cross_sections} from the lab eight instructions \cit
 	\label{fig:cross_sections}
 \end{figure}
 
-See Figure \ref{fig:peter_work} for our shear flow calculations.
+To calculate the shear stress distribution, we use Equation \ref{eqn:shear_stress_distribution} from lecture notes \cite{lecture_notes}
+\begin{align} \label{eqn:shear_stress_distribution}
+	\tau&=-\frac{P}{It}\int_0^sytds
+\end{align}
+where $P$ is an external load, $I$ is the moment of inertia, $s$ is the path along the cross section of the beam, and $y$ is the distance from the axis of symmetry. We calculate $I$ as shown in Equation \ref{eqn:I_equation}
+\begin{align} \label{eqn:I_equation}
+	I&=\frac{2bt^3+t(h-t)^3+6bth^2}{12}
+\end{align}
+Below is our derivation for the shear stress distribution in each of the three sections of the C-channel beam. Note that since $t$ is small and constant, we can simplify many of the integrals.
+\begin{align*}
+	\tau_{12}(s_1)&=-\frac{P}{I}\int_0^{s_1}yds_1,\quad\text{where }0\le{}s_1\le{}b\\
+	&=-\frac{P}{I}\int_0^{s_1}\left(-\frac{h}{2}\right)ds_1\\
+	&=\frac{Phs_1}{2I}
+\end{align*}
+\begin{align*}
+	\tau_{24}(s_2)&=\tau_2-\frac{P}{I}\int_0^{s_2}yds_2,\quad\text{where }0\le{}s_2\le{}h\\
+	&=\tau_2-\frac{P}{I}\int_0^{s_2}\left(s_2-\frac{h}{2}\right)ds_2\\
+	&=\tau_2-\frac{P}{I}\left(\frac{s_2^2}{2}-\frac{hs_2}{2}\right)\\
+	&=\tau_2-\frac{P}{2I}(s_2^2-hs_2)
+\end{align*}
+\begin{align*}
+	\tau_{45}(s_4)&=\tau_4-\frac{P}{I}\int_0^{s_4}yds_4,\quad\text{where }0\le{}s_4\le{}b\\
+	&=\tau_4-\frac{P}{I}\int_0^{s_4}\left(\frac{h}{2}\right)ds_4\\
+	&=\tau_4-\frac{Phs_4}{2I}
+\end{align*}
+Programming these equations into MATLAB, for specimen one, we find the shear stress distributions shown below and the values of shear stress notated in Table \ref{tbl:shear_stresses_1}. Both the distributions and shear stresses are shown in Figure \ref{fig:shear_stresses_1}.
+\begin{align*}
+	\tau_{12}&=s_1(\qty{168.9}{\kilo\pascal\per\meter})\\
+	\tau_{24}&=\qty{6.248}{\kilo\pascal}+(\qty{2737}{\kilo\pascal\per\meter\squared})(-s_2^2+s_2(\qty{0.06172}{\meter}))\\
+	\tau_{45}&=\qty{6.248}{\kilo\pascal}+s_4(\qty{-168.9}{\kilo\pascal\per\meter})
+\end{align*}
+
+\begin{table}[!htbp]
+\caption{Shear stresses in specimen one.}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Point&$\tau$ (\unit{\kilo\pascal})\\
+		\hline
+		\num{1}&\num{0}\\
+		\hline
+		\num{2}&\num{6.248}\\
+		\hline
+		\num{3}&\num{8.854}\\
+		\hline
+		\num{4}&\num{6.248}\\
+		\hline
+		\num{5}&\num{0}\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:shear_stresses_1}
+\end{table}
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=6in]{images/peter shear flow}
-	\caption{Calculation of shear flow in specimens one and two.}
-	\label{fig:peter_work}
+	\includegraphics[width=5in]{images/shear_stresses_1}
+	\caption{Shear stresses and shear stress distribution of specimen one.}
+	\label{fig:shear_stresses_1}
+\end{figure}
+
+For specimen two, we find the shear stress distributions shown below and the values of shear stress notated in Table \ref{tbl:shear_stresses_2}. Both the distributions and shear stresses are shown in Figure \ref{fig:shear_stresses_2}.
+\begin{align*}
+	\tau_{12}&=s_1(\qty{3839}{\kilo\pascal\per\meter})\\
+	\tau_{24}&=\qty{54.61}{\kilo\pascal}+(\qty{1.799e5}{\kilo\pascal\per\meter\squared})(-s_2^2+s_2(\qty{0.02134}{\meter}))\\
+	\tau_{45}&=\qty{54.61}{\kilo\pascal}+s_4(\qty{-3839}{\kilo\pascal\per\meter})
+\end{align*}
+
+\begin{table}[!htbp]
+\caption{Shear stresses in specimen two.}
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Point&$\tau$ (\unit{\kilo\pascal})\\
+		\hline
+		\num{1}&\num{0}\\
+		\hline
+		\num{2}&\num{54.61}\\
+		\hline
+		\num{3}&\num{75.08}\\
+		\hline
+		\num{4}&\num{54.61}\\
+		\hline
+		\num{5}&\num{0}\\
+		\hline
+	\end{tabular}
+\end{center}
+\label{tbl:shear_stresses_2}
+\end{table}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=5in]{images/shear_stresses_2}
+	\caption{Shear stresses and shear stress distribution of specimen two.}
+	\label{fig:shear_stresses_2}
 \end{figure}
 
 \subsection{Problem 4}\label{problem_4}
-% TODO: Revise
+Since the C-channel beam is symmetrical about the $x$-axis, the shear center must lie on the $x$-axis. If it was above or below the $x$-axis, force applied at that location would cause torsion. In both specimen, the $x$-axis is located at $\frac{h}{2}$. The $x$-coordinate for the shear centers is found using Equation \ref{eqn:sc_cbeam} and is tabulated in Table \ref{tbl:shear_centers}.
 
+Assuming the $x$ axis aligns with the axis of symmetry for the C-channel beam and the $y$ axis aligns with the axis of symmetry for the vertical web of the web, the exact $(x,y)$ coordinate positions for specimen one and two are as follows.
 \begin{align*}
-	\text{Specimen }\num{1}\text{: }(x,y)&=(\num{10.787},\num{0}) \unit{\mm}\\
-	\text{Specimen }\num{2}\text{: }(x,y)&=(\num{3.507},\num{0}) \unit{\mm}
+	\text{Specimen 1:}\quad(x,y)&=(\qty{-1.48}{\cm},\num{0})\\
+	\text{Specimen 2:}\quad(x,y)&=(\qty{-0.590}{\cm},\num{0})
 \end{align*}
-Since the cross section is symmetrical across the $y$-axis, we know that the $y$-coordinate for shear center will be \num{0} due to the placement of the $x$-axis being at $\frac{h}{2}$. Then we can find the $x$-coordinate by using the equation for e above.  
+These coordinates are shown visually with a red dot in Figures \ref{fig:sc_grid_1} and \ref{fig:sc_grid_2}. Each square of the grid is equivalent to a square with dimensions $t\times{}t$, where $t$ is the thickness of the beam.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=4in]{images/shear_center_1}
+	\caption{Shear center grid for specimen one. The shear center is marked with the red dot. Each grid square is a $t\times{}t$ square, where $t$ is the thickness of the beam.}
+	\label{fig:sc_grid_1}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=4in]{images/shear_center_2}
+	\caption{Shear center grid for specimen two. The shear center is marked with the red dot. Each grid square is a $t\times{}t$ square, where $t$ is the thickness of the beam.}
+	\label{fig:sc_grid_2}
+\end{figure}
 
 \subsection{Problem 5}
-% TODO: Revise
-
-If the height increased significantly, the sample would be more comparable to a rectangular beam. Since $h$ would increase so much, $h$ would dominate the equation making $b$ insignificant. Above the equation used to calculate $I$ as for that of a C-section, but since can be cut out, the new equation for $I$ would be that of a rectangular beam. Substituting our derived $I$ equation into the $e$ equation, we see that as $h$ approaches infinity, $e$ approaches \num{0}. This would offset the shear center to be at the origin used in question \ref{problem_4}. Because the load of offset slightly, there will still be an angle of twist in the part, but due to the same reason stated earlier, the angle of twist would be so small it would extremely small.
+If the height of the C-channel beam were to increase a hundredfold or approach infinity, the shape of the C-channel beam would begin to resemble a rectangle. Specifically, the horizontal flanges would have less of an effect on the structure. As the vertical flange increases in area, the shear center will move closer to the vertical axis of symmetry of the vertical flange. Since $e$ is measured from that vertical axis of symmetry, $e$ should approach \num{0}. We can prove this by substituting $I$ from Equation \ref{eqn:I_equation} into Equation \ref{eqn:sc_cbeam} and taking the limit as $h$ approaches infinity. This proof is shown below:
+\begin{align*}
+	e&=\frac{h^2b^2t}{4I}\\
+	&=\frac{12h^2b^2t}{2bt^3+t(h-t)^3+6bth^2}\\
+	&=\frac{12h^2b^2t}{2bt^3+th^3-3t^2h^2+3t^3h-t^4+6bth^2}\\
+	&=\frac{12h^2b^2}{2bt^2+h^3-3th^2+3t^2h-t^3+6bh^2}
+\end{align*}
+Since there is an $h^3$ term in the denominator and only an $h^2$ term in the numerator, the denominator will grow faster than the numerator and therefore,
+\begin{align*}
+	\lim_{h\rightarrow\infty}(e)&=\lim_{h\rightarrow\infty}\left(\frac{12h^2b^2}{2bt^2+h^3-3th^2+3t^2h-t^3+6bh^2}\right)\\
+	&=0
+\end{align*}
 
 \subsection{Problem 6}
-% TODO: Revise
-
 During the increase of both opening angle and radius, shape of the section going not to look like $C$. Increasing open angle, the open portion gets itself bigger. If the open angle reaches \qty{180}{\degree} ($2\theta_0=\qty{180}{\degree}$), shape of cross section will look like the circular pipe split in half along to path of that. However, the area value of this section will be bigger, depending on the value of increment. The equation below expresses the area of section with the circular given:
 \begin{align*}
 	A&=\pi\left(r+\frac{t}{2}\right)^2\frac{360-2\theta_0}{360}-\pi\left(r-\frac{t}{2}\right)^2\frac{360-2\theta_0}{360}
@@ -479,15 +587,15 @@ The area will increase depending on how the value of the open-angle and radius i
 	\label{fig:random_graph}
 \end{figure}
 
-\section{Sources of Error}\label{sources_of_error}
-The most significant source of error in this lab is likely our own derivations and calculations. Known of our theoretical shear value calculations in the prelab agreed and none of our prelab values matched the measured shear centers. To accurately calculate the relative error between the theoretical and measured shear centers, we will need to revisit our derivations and calculations.
+Plotting Equation \ref{eqn:sc_circbeam}, the equation for the shear center offset of a circular open-channel beam, and letting $\theta_0$ get arbitrarily close to $\pi$, we find that the shear center offset approaches $r$ as $\theta_0\rightarrow\pi$.
 
-Additionally, many of the typical sources of error still apply. If the lab table or the beam was not initially level, all our measurements would be systematically incorrect. If the thickness of the beams or the dimensions were not exactly as described in the lab instructions, this would also result in higher error. Since we were measuring by hand, there is a possibly for random human error to propagate through our calculations due to the inconsistent way in which we measure things visually.
+\section{Sources of Error}\label{sources_of_error}
+Some of our shear center calculations had a significant amount of error. If the lab table or the beam was not initially level, all our measurements would be systematically incorrect. If the thickness of the beams or the dimensions were not exactly as described in the lab instructions, this would also result in higher error. Since we were measuring by hand, there is a possibly for random human error to propagate through our calculations due to the inconsistent way in which we measure things visually. Additionally, we did not ``zero'' out the cross bar after each test, so there may have been an initial angle of twist value after the first test was measured.
 
 \section{Conclusion} \label{conclusion-section}
-% TODO: Revise
+Due to the numerous sources of error described in Section \ref{sources_of_error}, our shear center calculations did not match well on specimens one through three. We were able to accurately predict the location of the shear center in specimens four and five, however.
 
-Overall, our theoretical values did not match our measured values. This is mainly due to poor derivations or calculations, as described in Section \ref{sources_of_error}. Each group member had differing derivations for these specimens. Although our derivations were incorrect, we could provide valuable insights into how the material would react under load. The measured values that were obtained proved to be reliable data for finding the actual shear centers of each specimen.
+Additionally, we accurately predicted the deflection of specimen one undergoing a loading at its shear center. We examined what effect changing the cross section would have on the shear center offset of a C-channel and open-channel beam.
 
 \printbibliography[heading=subbibintoc]
 \appendix
@@ -529,4 +637,7 @@ Overall, our theoretical values did not match our measured values. This is mainl
 	\caption{The measured angles of twist for specimen three with the measured shear center and the final outlier data point removed.}
 	\label{fig:specimen_3_sc_modified}
 \end{figure}
+
+\chapter{Code}
+See the attached pages for our calculation script and output.
 \end{document}

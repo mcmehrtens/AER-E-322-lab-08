@@ -206,8 +206,8 @@ grid on;
 % Calculate moments of inertia and theoretical shear centers
 fprintf("\nTheoretical Shear Centers:\n")
 [I_1, I_2, e_1_th, e_2_th, e_3_th, e_4_th, e_5_th] = calc_shear_centers;
-I_1 = unitConvert(I_1, u.cm^4); % [cm^4]
-I_2 = unitConvert(I_2, u.cm^4); % [cm^4]
+I_1 = unitConvert(I_1, u.m^4); % [m^4]
+I_2 = unitConvert(I_2, u.m^4); % [m^4]
 e_1_th = unitConvert(e_1_th, u.cm); % [cm]
 e_2_th = unitConvert(e_2_th, u.cm); % [cm]
 e_3_th = unitConvert(e_3_th, u.cm); % [cm]
@@ -229,3 +229,60 @@ fprintf("\nRelative Errors:\n" + ...
     "e_4_err = %g%%\n" + ...
     "e_5_err = %g%%\n", ...
     [e_1_err, e_2_err, e_3_err, e_4_err, e_5_err]);
+
+% General Equations of Shear Flow
+tau_12 = @(P, h, I, s_1) P * h * s_1 / (2 * I); % [Pa]
+tau_24 = @(P, h, I, b, s_2) tau_12(P, h, I, b) ...
+    - P / (2 * I) * (s_2^2 - h * s_2); % [Pa]
+tau_45 = @(P, h, I, b, s_4) tau_24(P, h, I, b, h) ...
+    - P * h * s_4 / (2 * I); % [Pa]
+
+% Calculate shear flow in specimen 1
+fprintf("\nShear Flow Calculations for Specimen 1:\n")
+P_1 = unitConvert(100*u.g, u.kg) * (9.81*u.m/u.s^2); % [N]
+h_1 = unitConvert(2.43*u.in, u.m); % [m]
+b_1 = unitConvert(1.456*u.in, u.m); % [m]
+
+syms s;
+tau_12_1 = unitConvert(tau_12(P_1, h_1, I_1, s), u.kPa); % [kPa]
+tau_24_1 = unitConvert(tau_24(P_1, h_1, I_1, b_1, s), u.kPa); % [kPa]
+tau_45_1 = unitConvert(tau_45(P_1, h_1, I_1, b_1, s), u.kPa); % [kPa]
+tau_1_1 = unitConvert(subs(tau_12_1, s, 0), u.kPa); % [kPa]
+tau_2_1 = unitConvert(subs(tau_12_1, s, b_1), u.kPa); % [kPa]
+tau_3_1 = unitConvert(subs(tau_24_1, s, h_1 / 2), u.kPa); % [kPa]
+tau_4_1 = unitConvert(subs(tau_24_1, s, h_1), u.kPa); % [kPa]
+tau_5_1 = unitConvert(subs(tau_45_1, s, b_1), u.kPa); % [kPa]
+
+fprintf("tau_12_1 = "); disp(vpa(tau_12_1, 4));
+fprintf("tau_24_1 = "); disp(vpa(tau_24_1, 4));
+fprintf("tau_45_1 = "); disp(vpa(tau_45_1, 4));
+fprintf("tau_1_1 = "); disp(vpa(tau_1_1, 4));
+fprintf("tau_2_1 = "); disp(vpa(tau_2_1, 4));
+fprintf("tau_3_1 = "); disp(vpa(tau_3_1, 4));
+fprintf("tau_4_1 = "); disp(vpa(tau_4_1, 4));
+fprintf("tau_5_1 = "); disp(vpa(tau_5_1, 4));
+
+% Calculate shear flow in specimen 2
+fprintf("Shear Flow Calculations for Specimen 2:\n")
+P_2 = unitConvert(200*u.g, u.kg) * (9.81*u.m/u.s^2); % [N]
+h_2 = unitConvert(0.84*u.in, u.m); % [m]
+b_2 = unitConvert(0.56*u.in, u.m); % [m]
+
+syms s;
+tau_12_2 = unitConvert(tau_12(P_2, h_2, I_2, s), u.kPa); % [kPa]
+tau_24_2 = unitConvert(tau_24(P_2, h_2, I_2, b_2, s), u.kPa); % [kPa]
+tau_45_2 = unitConvert(tau_45(P_2, h_2, I_2, b_2, s), u.kPa); % [kPa]
+tau_1_2 = unitConvert(subs(tau_12_2, s, 0), u.kPa); % [kPa]
+tau_2_2 = unitConvert(subs(tau_12_2, s, b_2), u.kPa); % [kPa]
+tau_3_2 = unitConvert(subs(tau_24_2, s, h_2 / 2), u.kPa); % [kPa]
+tau_4_2 = unitConvert(subs(tau_24_2, s, h_2), u.kPa); % [kPa]
+tau_5_2 = unitConvert(subs(tau_45_2, s, b_2), u.kPa); % [kPa]
+
+fprintf("tau_12_2 = "); disp(vpa(tau_12_2, 4));
+fprintf("tau_24_2 = "); disp(vpa(tau_24_2, 4));
+fprintf("tau_45_2 = "); disp(vpa(tau_45_2, 4));
+fprintf("tau_1_2 = "); disp(vpa(tau_1_2, 4));
+fprintf("tau_2_2 = "); disp(vpa(tau_2_2, 4));
+fprintf("tau_3_2 = "); disp(vpa(tau_3_2, 4));
+fprintf("tau_4_2 = "); disp(vpa(tau_4_2, 4));
+fprintf("tau_5_2 = "); disp(vpa(tau_5_2, 4));
